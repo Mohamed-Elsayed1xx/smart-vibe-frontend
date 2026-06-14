@@ -1,177 +1,98 @@
-# SmartBayt Frontend 🛍️
+# SmartBayt — Full Stack E-Commerce Platform
 
-A modern, fully-featured **e-commerce storefront** built with **React 18**, **TypeScript**, and **Tailwind CSS** — complete with a powerful Admin Dashboard.
+A full-stack e-commerce platform for smart-home appliances, built with modern technologies.
 
-> 🔗 Powered by [SmartBayt API](https://github.com/t9amw0rk-sys/smartbayt-api)
-
----
-
-## ✨ Features
-
-### 🛒 Customer Side
-- 🏠 **Home Page** — Hero section, featured products, categories showcase
-- 🛍️ **Shop** — Browse, filter, and search products
-- 📄 **Product Detail** — Image gallery, reviews, quick add to cart
-- ❤️ **Wishlist** — Save products for later
-- 🛒 **Cart & Checkout** — Full cart management with order confirmation
-- 👤 **User Profile** — Update info and view order history
-- 🔐 **Auth** — Login, Register, Forgot/Reset Password
-
-### 🔧 Admin Dashboard
-- 📊 **Dashboard** — Overview stats and analytics
-- 📦 **Products** — Full CRUD with image upload
-- 🗂️ **Categories** — Manage product categories
-- 📋 **Orders** — Track and manage customer orders
-- 👥 **Customers** — View registered users
-- 🎟️ **Coupons** — Discount code management
-- ⭐ **Reviews** — Moderate product reviews
-- ❓ **FAQs** — Manage frequently asked questions
-- 📝 **Blog** — Content management
-- 💼 **Jobs** — Job listings management
-- ⚙️ **Settings** — App configuration
-
----
+## 🚀 Live Demo
+Frontend: https://smartbayt-frontend-eight.vercel.app/
 
 ## 🛠️ Tech Stack
 
-| Category | Technology |
-|----------|-----------|
-| Framework | React 18 + TypeScript |
-| Build Tool | Vite |
-| Styling | Tailwind CSS + shadcn/ui |
-| State Management | TanStack Query (React Query) |
-| Routing | React Router DOM v7 |
-| Forms | React Hook Form + Zod |
-| Animations | Framer Motion |
-| HTTP Client | Axios |
-| Icons | Lucide React |
-| Charts | Recharts |
-| Theme | next-themes (Dark/Light mode) |
-| Testing | Vitest + Testing Library |
+### Frontend
+- React 18 + TypeScript
+- Vite — Build tool
+- Tailwind CSS — Styling
+- Shadcn/UI — Component library
+- TanStack Query — Data fetching & caching
+- Axios — HTTP client
 
----
+### Backend
+- ASP.NET Core — REST API
+- Entity Framework Core — ORM
+- PostgreSQL — Database
+- JWT Authentication — Secure auth
+- BCrypt — Password hashing
+- Cloudinary — Image hosting
 
-## 📁 Project Structure
+## ✨ Features
+- 🔐 JWT Authentication (Register / Login)
+- 🛒 Shopping cart & wishlist
+- 🏷️ Discount coupon system (percentage & fixed value)
+- ⭐ Product reviews with admin approval workflow
+- 📦 Order management & checkout flow
+- 🛡️ Admin panel (products, orders, users, coupons, reviews)
+- 🖼️ Image upload via Cloudinary
+- 🌙 Dark / Light mode
+- 📱 Fully responsive
 
+## 🏗️ Architecture
 ```
-src/
-├── api/                    # API layer (Axios calls)
-│   ├── client.ts           # Axios instance with interceptors
-│   ├── auth.ts             # Auth endpoints
-│   ├── products.ts         # Products endpoints
-│   ├── orders.ts           # Orders endpoints
-│   ├── categories.ts       # Categories endpoints
-│   └── other.ts            # Reviews, FAQs, etc.
-├── components/
-│   ├── admin/              # Admin layout & protected routes
-│   ├── cart/               # Cart drawer
-│   ├── home/               # Hero, Featured Products, Categories
-│   ├── layout/             # Navbar & Footer
-│   ├── products/           # Product card & quick view
-│   ├── search/             # Search modal
-│   └── ui/                 # shadcn/ui components
-├── context/
-│   ├── AuthContext.tsx     # Authentication state
-│   ├── CartContext.tsx     # Shopping cart state
-│   ├── WishlistContext.tsx # Wishlist state
-│   └── ThemeContext.tsx    # Dark/Light mode
-├── pages/
-│   ├── Home.tsx
-│   ├── Shop.tsx
-│   ├── ProductDetail.tsx
-│   ├── Cart.tsx
-│   ├── Checkout.tsx
-│   ├── Wishlist.tsx
-│   ├── Profile.tsx
-│   ├── Login.tsx / Register.tsx
-│   └── admin/              # All admin pages
-└── App.tsx                 # Routes & providers
+smartbayt-frontend-main/      # Frontend (React + TypeScript)
+├── src/
+│   ├── api/                    # API layer (axios, auth, products, orders)
+│   ├── components/
+│   │   ├── admin/                # Admin panel components
+│   │   ├── cart/                  # Cart components
+│   │   ├── products/               # Product listing & details
+│   │   ├── search/                  # Search & filters
+│   │   ├── home/                     # Homepage sections
+│   │   ├── layout/                    # Layout components
+│   │   └── ui/                         # Reusable UI primitives
+│   ├── context/                          # React context (Auth, Cart, Theme)
+│   ├── hooks/                              # Custom React hooks
+│   ├── pages/                               # Page components (incl. admin)
+│   └── utils/                                # Helper utilities
+
+SmartBayt.API/                # Backend (ASP.NET Core)
+├── Controllers/                 # API endpoints (Auth, Products, Orders, etc.)
+├── Models/                       # Database models
+├── DTOs/                          # Data transfer objects
+├── Data/                            # DbContext
+├── Helpers/                          # JWT helper
+└── Migrations/                        # EF Core migrations
 ```
 
----
-
-## 🚀 Getting Started
+## 🚦 Getting Started
 
 ### Prerequisites
+- Node.js 18+
+- .NET 10 SDK
+- PostgreSQL 17
 
-- [Node.js 18+](https://nodejs.org/)
-- [SmartBayt API](https://github.com/t9amw0rk-sys/smartbayt-api) running locally or deployed
-
-### 1. Clone the repository
-
+### Backend Setup
 ```bash
-git clone https://github.com/t9amw0rk-sys/smartbayt-frontend.git
-cd smartbayt-frontend
+cd SmartBayt.API
+# Update connection string in appsettings.json
+dotnet ef database update
+dotnet run
 ```
 
-### 2. Install dependencies
-
+### Frontend Setup
 ```bash
+cd smartbayt-frontend-main
 npm install
-```
-
-### 3. Configure environment variables
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env`:
-
-```env
-VITE_API_URL=http://localhost:5000
-```
-
-### 4. Start the development server
-
-```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+## 📊 Database Schema
+- **Users** — Authentication & profiles
+- **Products** — Product catalog
+- **Orders** — Order records & items
+- **Reviews** — Product reviews (with approval status)
+- **Coupons** — Discount codes
 
----
+## 📝 Notes
+- Images are uploaded and served via Cloudinary
+- Frontend deployed on Vercel, backend + database on Railway
 
-## 📦 Available Scripts
-
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
-| `npm run test` | Run tests once |
-| `npm run test:watch` | Run tests in watch mode |
-
----
-
-## 🌐 Deployment
-
-### Build for production
-
-```bash
-npm run build
-```
-
-Output will be in the `dist/` folder — deploy to **Vercel**, **Netlify**, or any static hosting.
-
-### Vercel (Recommended)
-
-```bash
-npm i -g vercel
-vercel
-```
-
-Set the environment variable `VITE_API_URL` in your Vercel project settings.
-
----
-
-## 🔗 Related
-
-- **Backend API** → [smartbayt-api](https://github.com/t9amw0rk-sys/smartbayt-api)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+## 👨‍💻 Developer
+Built by **Mohamed Elsayed** as a portfolio project showcasing full-stack development skills.
