@@ -177,7 +177,7 @@ export const uploadApi = {
     const formData = new FormData();
     formData.append("file", file);
     const res = await apiClient.post("/api/upload", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": undefined },
     });
     return res.data;
   },
